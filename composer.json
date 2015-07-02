@@ -1,0 +1,11 @@
+{
+    "require": {
+        "phpunit/phpunit": "4.7.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "EcEnglish\\ApiClient\\": "src",
+            "EcEnglish\\Tests\\": "test"
+        }   
+    }
+}
