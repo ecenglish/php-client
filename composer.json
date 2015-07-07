@@ -1,4 +1,5 @@
 {
+    "name": "ecenglish/php-client",
     "require": {
         "phpunit/phpunit": "4.7.*"
     },
