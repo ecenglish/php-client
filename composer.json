@@ -1,6 +1,6 @@
 {
     "name": "ecenglish/php-client",
-    "require": {
+    "require-dev": {
         "phpunit/phpunit": "4.7.*"
     },
     "autoload": {
