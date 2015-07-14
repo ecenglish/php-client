@@ -64,7 +64,7 @@ class EcEnglishApiClient {
                 }
 
                 if (\property_exists($responseStatus, 'Errors')) {
-                    throw new ValidationEception($message, $responseStatus->Errors, $code);
+                    throw new ValidationException($message, $responseStatus->Errors, $code);
                 }
 
             }

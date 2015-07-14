@@ -33,7 +33,7 @@ class Primitives {
     }
 
     public static function WriteString($value) {
-        return (string) $str;
+        return (string) $value;
     }
 
     public static function ReadLocalDate($str) {
