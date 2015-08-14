@@ -22,6 +22,8 @@ class AskAQuestionForm {
     public $Message;
     /** @var string|null */
     public $Locale;
+    /** @var \EcEnglish\ApiClient\Contract\FormTrackingDto|null */
+    public $Tracking;
 
     public static function Deserialize($dto) {
         if ($dto === NULL) {
@@ -37,6 +39,7 @@ class AskAQuestionForm {
         $obj->HowDidYouHearAboutUs = Primitives::ReadString($dto->HowDidYouHearAboutUs);
         $obj->Message = Primitives::ReadString($dto->Message);
         $obj->Locale = Primitives::ReadString($dto->Locale);
+        $obj->Tracking = FormTrackingDto::Deserialize($dto->Tracking);
         return $obj;
     }
 
@@ -51,6 +54,12 @@ class AskAQuestionForm {
         $dto->HowDidYouHearAboutUs = Primitives::WriteString($obj->HowDidYouHearAboutUs);
         $dto->Message = Primitives::WriteString($obj->Message);
         $dto->Locale = Primitives::WriteString($obj->Locale);
+        if ($obj->Tracking !== NULL) {
+            $dto->Tracking = FormTrackingDto::Serialize($obj->Tracking);
+        }
+        else {
+            $dto->Tracking = NULL;
+        }
         return $dto;
     }
 

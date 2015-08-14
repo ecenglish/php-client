@@ -18,8 +18,6 @@ class Class0 {
     public $EndDate;
     /** @var boolean */
     public $IsDeleted;
-    /** @var \EcEnglish\ApiClient\Contract\Lesson[] */
-    public $Lessons;
 
     public static function Deserialize($dto) {
         if ($dto === NULL) {
@@ -45,23 +43,6 @@ class Class0 {
         $dto->StartDate = Primitives::WriteLocalDate($obj->StartDate);
         $dto->EndDate = Primitives::WriteLocalDate($obj->EndDate);
         $dto->IsDeleted = Primitives::WriteBoolean($obj->IsDeleted);
-        if ($obj->Lessons !== NULL) {
-            $tmpArray0 = array();
-            $arrayIndex0 = 0;
-            foreach ($obj->Lessons as $arrayItem0) {
-                if ($arrayItem0 !== NULL) {
-                    $tmpArray0[$arrayIndex0] = Lesson::Serialize($arrayItem0);
-                }
-                else {
-                    $tmpArray0[$arrayIndex0] = NULL;
-                }
-                ++$arrayIndex0;
-            }
-            $dto->Lessons = $tmpArray0;
-        }
-        else {
-            $dto->Lessons = NULL;
-        }
         return $dto;
     }
 }

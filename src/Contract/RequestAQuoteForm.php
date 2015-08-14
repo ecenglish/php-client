@@ -33,7 +33,9 @@ class RequestAQuoteForm {
     /** @var \DateTime|null */
     public $CourseStartDate;
     /** @var int|null */
-    public $LesonsPerWeek;
+    public $LessonsPerWeek;
+    /** @var int|null */
+    public $CourseNumberOfWeeks;
     /** @var string|null */
     public $Accommodation;
     /** @var string|null */
@@ -43,9 +45,9 @@ class RequestAQuoteForm {
     /** @var string|null */
     public $AccommodationBathroomOption;
     /** @var string|null */
-    public $AccomodationMiscOption;
+    public $AccommodationMiscOption;
     /** @var int|null */
-    public $NumberOfWeeks;
+    public $AccommodationNumberOfWeeks;
     /** @var string|null[] */
     public $Extras;
     /** @var string|null */
@@ -54,6 +56,8 @@ class RequestAQuoteForm {
     public $SpecialRequirements;
     /** @var boolean */
     public $AcceptsTerms;
+    /** @var \EcEnglish\ApiClient\Contract\FormTrackingDto|null */
+    public $Tracking;
 
     public static function Deserialize($dto) {
         if ($dto === NULL) {
@@ -74,16 +78,18 @@ class RequestAQuoteForm {
         $obj->PreferredCentre = Primitives::ReadString($dto->PreferredCentre);
         $obj->Course = Primitives::ReadString($dto->Course);
         $obj->CourseStartDate = Primitives::ReadLocalDate($dto->CourseStartDate);
-        $obj->LesonsPerWeek = Primitives::ReadInt($dto->LesonsPerWeek);
+        $obj->LessonsPerWeek = Primitives::ReadInt($dto->LessonsPerWeek);
+        $obj->CourseNumberOfWeeks = Primitives::ReadInt($dto->CourseNumberOfWeeks);
         $obj->Accommodation = Primitives::ReadString($dto->Accommodation);
         $obj->AccommodationRoomOption = Primitives::ReadString($dto->AccommodationRoomOption);
         $obj->AccommodationCateringOption = Primitives::ReadString($dto->AccommodationCateringOption);
         $obj->AccommodationBathroomOption = Primitives::ReadString($dto->AccommodationBathroomOption);
-        $obj->AccomodationMiscOption = Primitives::ReadString($dto->AccomodationMiscOption);
-        $obj->NumberOfWeeks = Primitives::ReadInt($dto->NumberOfWeeks);
+        $obj->AccommodationMiscOption = Primitives::ReadString($dto->AccommodationMiscOption);
+        $obj->AccommodationNumberOfWeeks = Primitives::ReadInt($dto->AccommodationNumberOfWeeks);
         $obj->Message = Primitives::ReadString($dto->Message);
         $obj->SpecialRequirements = Primitives::ReadString($dto->SpecialRequirements);
         $obj->AcceptsTerms = Primitives::ReadBoolean($dto->AcceptsTerms);
+        $obj->Tracking = FormTrackingDto::Deserialize($dto->Tracking);
         return $obj;
     }
 
@@ -103,13 +109,14 @@ class RequestAQuoteForm {
         $dto->PreferredCentre = Primitives::WriteString($obj->PreferredCentre);
         $dto->Course = Primitives::WriteString($obj->Course);
         $dto->CourseStartDate = Primitives::WriteLocalDate($obj->CourseStartDate);
-        $dto->LesonsPerWeek = Primitives::WriteInt($obj->LesonsPerWeek);
+        $dto->LessonsPerWeek = Primitives::WriteInt($obj->LessonsPerWeek);
+        $dto->CourseNumberOfWeeks = Primitives::WriteInt($obj->CourseNumberOfWeeks);
         $dto->Accommodation = Primitives::WriteString($obj->Accommodation);
         $dto->AccommodationRoomOption = Primitives::WriteString($obj->AccommodationRoomOption);
         $dto->AccommodationCateringOption = Primitives::WriteString($obj->AccommodationCateringOption);
         $dto->AccommodationBathroomOption = Primitives::WriteString($obj->AccommodationBathroomOption);
-        $dto->AccomodationMiscOption = Primitives::WriteString($obj->AccomodationMiscOption);
-        $dto->NumberOfWeeks = Primitives::WriteInt($obj->NumberOfWeeks);
+        $dto->AccommodationMiscOption = Primitives::WriteString($obj->AccommodationMiscOption);
+        $dto->AccommodationNumberOfWeeks = Primitives::WriteInt($obj->AccommodationNumberOfWeeks);
         if ($obj->Extras !== NULL) {
             $tmpArray0 = array();
             $arrayIndex0 = 0;
@@ -125,6 +132,12 @@ class RequestAQuoteForm {
         $dto->Message = Primitives::WriteString($obj->Message);
         $dto->SpecialRequirements = Primitives::WriteString($obj->SpecialRequirements);
         $dto->AcceptsTerms = Primitives::WriteBoolean($obj->AcceptsTerms);
+        if ($obj->Tracking !== NULL) {
+            $dto->Tracking = FormTrackingDto::Serialize($obj->Tracking);
+        }
+        else {
+            $dto->Tracking = NULL;
+        }
         return $dto;
     }
 

@@ -22,7 +22,7 @@ class ClientCallTest extends PHPUnit_Framework_TestCase {
         $opts->ApiKey = 'U6rSbqQ8383:ApiKey1';
 
         $client = new Client\EcEnglishApiClient($opts);
-        $msg = new Contract\GetClasses();
+        $msg = new Contract\GelClasses();
         $msg->MinChangeSet = 'a';
         $msg->MaxChangeSet = 'b';
         $response = $client->Send($msg);
